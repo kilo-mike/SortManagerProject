@@ -4,16 +4,14 @@ public class BubbleSort {
 
 
     public static void sort(int[] arr) {
-        int n = arr.length;
-        int temp = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = 1; j < (n - i); j++) {
+        int temprary = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 1; j < arr.length; j++) {
                 if (arr[j - 1] > arr[j]) {
-                    temp = arr[j - 1];
+                    temprary = arr[j - 1];
                     arr[j - 1] = arr[j];
-                    arr[j] = temp;
+                    arr[j] = temprary;
                 }
-
             }
         }
     }
