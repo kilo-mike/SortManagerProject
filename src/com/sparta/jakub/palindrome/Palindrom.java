@@ -3,7 +3,8 @@ package com.sparta.jakub.palindrome;
 public class Palindrom {
    
 
-    public static void palindrome(String parameter) {
+    public static void palindrome(String insert) {
+        String parameter = insert.toLowerCase();
         StringBuilder palindrome = new StringBuilder(parameter);
         palindrome.reverse();
 
