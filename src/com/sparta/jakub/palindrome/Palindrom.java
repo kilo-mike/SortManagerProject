@@ -4,6 +4,10 @@ public class Palindrom {
    
 
     public static void palindrome(String insert) {
+        if (insert==""){
+            System.out.println("no palindrome");
+            return;
+        }
         String parameter = insert.toLowerCase();
         StringBuilder palindrome = new StringBuilder(parameter);
         palindrome.reverse();
@@ -12,7 +16,7 @@ public class Palindrom {
             if (parameter.charAt(i) == palindrome.charAt(i)) {
 
             } else {
-                System.out.println("is not palindrome");
+                System.out.println("no palindrome");
                 return;
             }
         }
