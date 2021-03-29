@@ -1,18 +1,21 @@
 package com.sparta.jakub.sort;
 
-public class BubbleSort {
+import com.sparta.jakub.sortInterface.Sorter;
 
+public class BubbleSort implements Sorter {
 
-    public static void sort(int[] arr) {
-        int temprary = 0;
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 1; j < arr.length; j++) {
-                if (arr[j - 1] > arr[j]) {
-                    temprary = arr[j - 1];
-                    arr[j - 1] = arr[j];
-                    arr[j] = temprary;
+    @Override
+    public int[] sortArray(int[] arrayToSort) {
+        int temp = 0;
+        for (int i = 0; i < arrayToSort.length; i++) {
+            for (int j = 1; j < arrayToSort.length; j++) {
+                if (arrayToSort[j - 1] > arrayToSort[j]) {
+                    temp = arrayToSort[j - 1];
+                    arrayToSort[j - 1] = arrayToSort[j];
+                    arrayToSort[j] = temp;
                 }
             }
         }
+        return arrayToSort;
     }
 }

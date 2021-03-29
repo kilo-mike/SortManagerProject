@@ -1,4 +1,4 @@
-package com.sparta.jakub;
+package com.sparta.jakub.start;
 
 public class Main {
 
