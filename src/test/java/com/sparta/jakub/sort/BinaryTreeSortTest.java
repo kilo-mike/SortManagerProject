@@ -21,25 +21,31 @@ class BinaryTreeSortTest {
 
     @Test
     void sortTest() throws ArrayTooSmallException {
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, binaryTreeSorter.sortArray(new int[]{5, 2, 1, 4, 3}));
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6}, binaryTreeSorter.sortArray(new int[]{5, 2, 6, 1, 4, 3}));
     }
 
     @Test
     void nullTest() {
-        Exception exception = assertThrows(NullPointerException.class, () -> binaryTreeSorter.sortArray(null));
+        Exception exception = assertThrows(NullPointerException.class, () -> {
+            binaryTreeSorter.sortArray(null);
+        });
         assertEquals("Array is null", exception.getMessage());
     }
 
 
     @Test
     void shortArrayTest() {
-        Exception exception = assertThrows(ArrayTooSmallException.class, () -> binaryTreeSorter.sortArray(new int[]{1}));
+        Exception exception = assertThrows(ArrayTooSmallException.class, () -> {
+            binaryTreeSorter.sortArray(new int[]{1});
+        });
         assertEquals("Array to small", exception.getMessage());
     }
 
     @Test
     void emptyArrayTest() {
-        Exception exception = assertThrows(ArrayTooSmallException.class, () -> binaryTreeSorter.sortArray(new int[]{}));
+        Exception exception = assertThrows(ArrayTooSmallException.class, () -> {
+            binaryTreeSorter.sortArray(new int[]{});
+        });
         assertEquals("Array to small", exception.getMessage());
     }
 

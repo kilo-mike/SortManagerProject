@@ -20,7 +20,7 @@ class MergeSortTest {
 
     @Test
     void sortTest() throws ArrayTooSmallException {
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, mergeSorter.sortArray(new int[]{5, 2, 1, 4, 3}));
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6}, mergeSorter.sortArray(new int[]{5, 2, 1, 4, 6, 3}));
     }
 
     @Test
@@ -36,7 +36,7 @@ class MergeSortTest {
         assertEquals("Array too small!", exception.getMessage());
     }
 
- @Test
+    @Test
     void emptyArrayTest() {
         Exception exception = assertThrows(ArrayTooSmallException.class, () -> mergeSorter.sortArray(new int[]{}));
         assertEquals("Array too small!", exception.getMessage());

@@ -44,30 +44,29 @@ public class Starter {
             arrayToSort[i] = random.nextInt(1000);
         }
         try {
-//            System.out.println("binary tree " + Arrays.toString(binaryTreeSort.sortArray(arrayToSort)));
-//            System.out.println("merge sort " + Arrays.toString(mergeSort.sortArray(arrayToSort)));
-//            System.out.println("bubble sort " + Arrays.toString(bubbleSort.sortArray(arrayToSort)));
+//            startBinary = System.nanoTime();
+            Printer.printer("binary tree " + Arrays.toString(binaryTreeSort.sortArray(arrayToSort)));
+//            binaryTreeSort.sortArray(arrayToSort);
+//            stopBinary = System.nanoTime();
 //            ---------------------------------
-            startBinary = System.nanoTime();
-            binaryTreeSort.sortArray(arrayToSort);
-            stopBinary = System.nanoTime();
+//            startBubble = System.nanoTime();
+            Printer.printer("bubble sort " + Arrays.toString(bubbleSort.sortArray(arrayToSort)));
+//            bubbleSort.sortArray(arrayToSort);
+//            stopBubble = System.nanoTime();
 //            ---------------------------------
-            startBubble = System.nanoTime();
-            bubbleSort.sortArray(arrayToSort);
-            stopBubble = System.nanoTime();
+//            startMerge = System.nanoTime();
+            Printer.printer("merge sort " + Arrays.toString(mergeSort.sortArray(arrayToSort)));
+//            mergeSort.sortArray(arrayToSort);
+//            stopMerge = System.nanoTime();
 //            ---------------------------------
-            startMerge = System.nanoTime();
-            mergeSort.sortArray(arrayToSort);
-            stopMerge = System.nanoTime();
-//            ---------------------------------
-            Printer.printer("Time taken in nanoseconds to sort random generated Array with "+arraySize+"elements: ");
-            logger.info("Time taken in nanoseconds: ");
-            Printer.printer("BinaryTree time: " + (stopBinary - startBinary));
-            logger.info("BinaryTree time: " + (stopBinary - startBinary));
-            Printer.printer("BubbleSort time: " + (stopBubble - startBubble));
-            logger.info("BubbleSort time: " + (stopBubble - startBubble));
-            Printer.printer("MergeSort time: " + (stopMerge - startMerge));
-            logger.info("MergeSort time: " + (stopMerge - startMerge));
+//            Printer.printer("Time taken in nanoseconds to sort random generated Array with "+arraySize+" elements: ");
+//            logger.info("Time taken in nanoseconds: ");
+//            Printer.printer("BinaryTree time: " + (stopBinary - startBinary));
+//            logger.info("BinaryTree time: " + (stopBinary - startBinary));
+//            Printer.printer("BubbleSort time: " + (stopBubble - startBubble));
+//            logger.info("BubbleSort time: " + (stopBubble - startBubble));
+//            Printer.printer("MergeSort time: " + (stopMerge - startMerge));
+//            logger.info("MergeSort time: " + (stopMerge - startMerge));
         } catch (ArrayTooSmallException e) {
             logger.error(e.getMessage(), e);
         } catch (Exception e) {

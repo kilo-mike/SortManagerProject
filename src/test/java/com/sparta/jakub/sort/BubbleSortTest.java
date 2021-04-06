@@ -21,24 +21,24 @@ class BubbleSortTest {
 
     @Test
     void sortTest() throws ArrayTooSmallException {
-        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, bubbleSorter.sortArray(new int[]{5, 2, 1, 4, 3}));
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6}, bubbleSorter.sortArray(new int[]{5, 2, 6, 1, 4, 3}));
     }
 
     @Test
     void nullTest() {
         Exception exception = assertThrows(NullPointerException.class, () -> bubbleSorter.sortArray(null));
-        assertEquals("Array is null!", exception.getMessage());
+        assertEquals("Array is null", exception.getMessage());
     }
 
     @Test
     void shortArrayTest() {
         Exception exception = assertThrows(ArrayTooSmallException.class, () -> bubbleSorter.sortArray(new int[]{1}));
-        assertEquals("Array must be larger than one!", exception.getMessage());
+        assertEquals("Array too small", exception.getMessage());
     }
 
     @Test
     void emptyArrayTest() {
         Exception exception = assertThrows(ArrayTooSmallException.class, () -> bubbleSorter.sortArray(new int[]{0}));
-        assertEquals("Array must be larger than one!", exception.getMessage());
+        assertEquals("Array too small", exception.getMessage());
     }
 }
