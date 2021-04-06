@@ -94,9 +94,9 @@ public class BinaryTreeImpl implements BinaryTree {
     public int getLeftChild(int element) throws ChildNotFoundException, RootNullException {
         root = getChild(root, element);
         if (root == null) {
-            throw new RootNullException("root is null"); // to do
+            throw new RootNullException("root is null");
         } else if (root.left == null) {
-            throw new ChildNotFoundException("Left child not found"); // to do
+            throw new ChildNotFoundException("Left child not found");
         }
         return root.left.element;
     }
@@ -106,9 +106,9 @@ public class BinaryTreeImpl implements BinaryTree {
     public int getRightChild(int element) throws ChildNotFoundException, RootNullException {
         root = getChild(root, element);
         if (root == null) {
-            throw new RootNullException("root is null"); // to do
+            throw new RootNullException("root is null");
         } else if (root.right == null) {
-            throw new ChildNotFoundException("Right child not found"); // to do
+            throw new ChildNotFoundException("Right child not found");
         }
         return root.right.element;
     }

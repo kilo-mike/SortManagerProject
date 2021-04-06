@@ -7,7 +7,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class BinaryTreeSort implements Sorter {
-    public static final Logger logger = LogManager.getLogger(BinaryTreeSort.class);
 
     private static BinaryTreeSort binaryTreeSort = new BinaryTreeSort();
 

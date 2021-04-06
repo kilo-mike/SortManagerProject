@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 public class BubbleSort implements Sorter {
 
-    public static final Logger logger = LogManager.getLogger(BubbleSort.class);
+
 
     private static BubbleSort bubbleSort = new BubbleSort();
 
