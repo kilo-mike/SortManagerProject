@@ -1,6 +1,6 @@
-package com.sparta.jakub.sortInterface;
+package com.sparta.jakub.interfaces;
 
-import com.sparta.jakub.exception.MyException;
+import com.sparta.jakub.exceptions.MyException;
 
 public interface Sorter {
 

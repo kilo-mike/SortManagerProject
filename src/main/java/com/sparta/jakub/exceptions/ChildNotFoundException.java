@@ -1,4 +1,4 @@
-package com.sparta.jakub.exception;
+package com.sparta.jakub.exceptions;
 
 public class ChildNotFoundException extends Exception {
 

@@ -1,14 +1,31 @@
 package com.sparta.jakub.sort;
 
-import com.sparta.jakub.exception.MyException;
-import com.sparta.jakub.sortInterface.Sorter;
+import com.sparta.jakub.exceptions.MyException;
+import com.sparta.jakub.interfaces.Sorter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class MergeSort implements Sorter {
-    @Override
-    public int[] sortArray(int[] arrayToSort) {
+    public static final Logger logger = LogManager.getLogger(MergeSort.class);
 
+    private static MergeSort mergeSort = new MergeSort();
+    public  static MergeSort getInstance() {
+        return mergeSort;
+    }
+
+    @Override
+    public int[] sortArray(int[] arrayToSort) throws MyException {
+
+        if (arrayToSort.length == 0 || arrayToSort.length == 1) {
+            throw new MyException("Array too small!");
+        } else {
+            mergeSort(arrayToSort);
+        }
+        return arrayToSort;
+    }
+    private void mergeSort(int[] arrayToSort) {
         if (arrayToSort.length < 2) {
-            return arrayToSort;
+            return;
         }
         int middle = arrayToSort.length / 2;
         int[] leftArray = new int[middle];
@@ -20,28 +37,12 @@ public class MergeSort implements Sorter {
         for (int i = middle; i < arrayToSort.length; i++) {
             rightArray[i - middle] = arrayToSort[i];
         }
-        sortArray(leftArray);
-        sortArray(rightArray);
+        mergeSort(leftArray);
+        mergeSort(rightArray);
         merge(arrayToSort, leftArray, rightArray);
-
-//        int temp1 = 0, temp2 = 0, temp3 = 0;
-//        while (temp1 < leftArray.length && temp2 < rightArray.length) {
-//            if (leftArray[temp1] <= rightArray[temp2]) {
-//                arrayToSort[temp3++] = leftArray[temp1++];
-//            } else {
-//                arrayToSort[temp3++] = rightArray[temp2++];
-//            }
-//        }
-//        while (temp1 < leftArray.length) {
-//            arrayToSort[temp3++] = leftArray[temp1++];
-//        }
-//        while (temp2 < rightArray.length) {
-//            arrayToSort[temp3++] = rightArray[temp2++];
-//        }
-        return arrayToSort;
     }
 
-    public void merge(int[] arrayToSort, int[] leftArray, int[] rightArray) {
+    private void merge(int[] arrayToSort, int[] leftArray, int[] rightArray) {
         int temp1 = 0, temp2 = 0, temp3 = 0;
         while (temp1 < leftArray.length && temp2 < rightArray.length) {
             if (leftArray[temp1] <= rightArray[temp2]) {
