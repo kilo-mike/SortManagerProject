@@ -23,8 +23,6 @@ public class Starter {
         Sorter mergeSort = sorterFactory.getSorter(SorterType.MERGE);
         Sorter bubbleSort = sorterFactory.getSorter(SorterType.BUBBLE);
 
-        double startBubble, stopBubble, startMerge, stopMerge, startBinary, stopBinary;
-
         Scanner scanner = new Scanner(System.in);
         int arraySize;
         while (true) {
@@ -34,7 +32,7 @@ public class Starter {
                 break;
             } else {
                 scanner.next();
-                System.err.println("Please enter a number!!");
+                Printer.printer("Please enter a number!!");
             }
         }
         int[] arrayToSort = new int[arraySize];
@@ -44,29 +42,10 @@ public class Starter {
             arrayToSort[i] = random.nextInt(1000);
         }
         try {
-//            startBinary = System.nanoTime();
             Printer.printer("binary tree " + Arrays.toString(binaryTreeSort.sortArray(arrayToSort)));
-//            binaryTreeSort.sortArray(arrayToSort);
-//            stopBinary = System.nanoTime();
-//            ---------------------------------
-//            startBubble = System.nanoTime();
             Printer.printer("bubble sort " + Arrays.toString(bubbleSort.sortArray(arrayToSort)));
-//            bubbleSort.sortArray(arrayToSort);
-//            stopBubble = System.nanoTime();
-//            ---------------------------------
-//            startMerge = System.nanoTime();
             Printer.printer("merge sort " + Arrays.toString(mergeSort.sortArray(arrayToSort)));
-//            mergeSort.sortArray(arrayToSort);
-//            stopMerge = System.nanoTime();
-//            ---------------------------------
-//            Printer.printer("Time taken in nanoseconds to sort random generated Array with "+arraySize+" elements: ");
-//            logger.info("Time taken in nanoseconds: ");
-//            Printer.printer("BinaryTree time: " + (stopBinary - startBinary));
-//            logger.info("BinaryTree time: " + (stopBinary - startBinary));
-//            Printer.printer("BubbleSort time: " + (stopBubble - startBubble));
-//            logger.info("BubbleSort time: " + (stopBubble - startBubble));
-//            Printer.printer("MergeSort time: " + (stopMerge - startMerge));
-//            logger.info("MergeSort time: " + (stopMerge - startMerge));
+
         } catch (ArrayTooSmallException e) {
             logger.error(e.getMessage(), e);
         } catch (Exception e) {
