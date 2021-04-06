@@ -26,9 +26,9 @@ public class BinaryTreeImpl implements BinaryTree {
     }
 
     private int countElement = 0;
-    private int AscCount = 0;
-    private int DescCount = 0;
-    private int[] sortedArrayAsc;
+    private int AscCount;
+    private int DescCount;
+    public int[] sortedArrayAsc;
     private int[] sortedArrayDesc;
 
 
@@ -52,44 +52,41 @@ public class BinaryTreeImpl implements BinaryTree {
     @Override
     public void addElements(int[] elements) {
 
-        for (int element : elements) {
-            root = addElement(root, element);
+        for (int i = 0; i < elements.length; i++) {
+            root = addElement(root, elements[i]);
             countElement++;
         }
-//        for (int i = 0; i < elements.length; i++) {
-//            root = addElement(root, elements[i]);
-//            countElement++;
-//        }
     }
 
-    private Node addElement(Node root, int element) {
-        if (root == null) {
-            root = new Node(element);
-        } else if (element < root.element) {
-            root.left = addElement(root.left, element);
-        } else if (element > root.element) {
-            root.right = addElement(root.right, element);
+    private Node addElement(Node node, int element) {
+        if (node == null) {
+            node = new Node(element);
+            return node;
+        } else if (element < node.element) {
+            node.left = addElement(node.left, element);
+        } else if (element > node.element) {
+            node.right = addElement(node.right, element);
         }
-        return root;
+        return node;
     }
 
     @Override
     public boolean findElement(int value) {
         root = findElement(root, value);
-        if (root != null) {
+        if (root != null)
             return true;
-        } else {
+        else
             return false;
-        }
     }
 
-    private Node findElement(Node node, int value) {
-        if (node == null || node.element == value) {
-            return node;
-        } else if (node.element > value) {
-            return findElement(node.left, value);
+    private Node findElement(Node root, int value) {
+        if (root == null || root.element == value) {
+            return root;
         }
-        return findElement(node.right, value);
+        if (root.element > value) {
+            return findElement(root.left, value);
+        }
+        return findElement(root.right, value);
     }
 
 
@@ -129,15 +126,16 @@ public class BinaryTreeImpl implements BinaryTree {
 
     @Override
     public int[] getSortedTreeAsc() {
-        sortedArrayAsc = new int[countElement - 1];
-
+        AscCount = 0;
+        sortedArrayAsc = new int[getNumberOfElements()];
         getSortedAsc(root);
         return sortedArrayAsc;
     }
 
     @Override
     public int[] getSortedTreeDesc() {
-        sortedArrayDesc = new int[countElement - 1];
+        DescCount = 0;
+        sortedArrayDesc = new int[getNumberOfElements()];
         getSortedDesc(root);
         return sortedArrayDesc;
     }
@@ -154,10 +152,10 @@ public class BinaryTreeImpl implements BinaryTree {
 
     private void getSortedDesc(Node node) {
         if (node != null) {
-            getSortedAsc(node.right);
+            getSortedDesc(node.right);
             sortedArrayDesc[DescCount] = node.element;
             DescCount++;
-            getSortedAsc(node.left);
+            getSortedDesc(node.left);
         }
 
     }

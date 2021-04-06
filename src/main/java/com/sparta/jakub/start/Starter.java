@@ -1,53 +1,33 @@
 package com.sparta.jakub.start;
 
 import com.sparta.jakub.binaryTree.BinaryTreeImpl;
+import com.sparta.jakub.exceptions.ArrayTooSmallException;
+import com.sparta.jakub.interfaces.Sorter;
+import com.sparta.jakub.type.SorterFactory;
+import com.sparta.jakub.type.SorterType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.Arrays;
 
 public class Starter {
 
     public static final Logger logger = LogManager.getLogger(Starter.class);
 
     public static void start() {
-//        BubbleSort bubbleSort = new BubbleSort();
-        int[] arrayToSort = {5, 7, 6, 3, 3, 88, 9, 1, 21, 2, 67, 91, 4};
-        int[] arrayToSort2 = {1, 2, 3, 4, 3, 2, 1};
-        int[] arrayToSort3 = null;
+        SorterFactory sorterFactory = new SorterFactory();
+        Sorter binaryTreeSort = sorterFactory.getSorter(SorterType.BINARY);
+        Sorter mergeSort = sorterFactory.getSorter(SorterType.MERGE);
+        Sorter bubbleSort = sorterFactory.getSorter(SorterType.BUBBLE);
 
-        BinaryTreeImpl binaryTree = new BinaryTreeImpl();
-//        binaryTree.addElements(arrayToSort);
-        binaryTree.addElement(67);
-//        System.out.println(binaryTree.getRootElement());
-        System.out.println(  binaryTree.findElement(68));
-        System.out.println(binaryTree.findElement(9));
-
-
-//        try {
-//            bubbleSort.sortArray(arrayToSort2);
-//            for (int value : arrayToSort2) {
-//                System.out.print(value + " ");
-//            }
-//        } catch (MyException e) {
-//            logger.error(e.getMessage(), e);
-//        } catch (Exception e) {
-//            logger.error(e);
-//        }
-
-
-//        MergeSort mergeSort = new MergeSort();
-//        try {
-//            mergeSort.sortArray(arrayToSort);
-//            logger.info("test");
-//            for (int value : arrayToSort) {
-//                System.out.print(value + " ");
-//            }
-//        } catch (MyException e) {
-//            logger.error(e.getMessage(), e);
-//        } catch (Exception e) {
-//            logger.error(e);
-//        }
-
-
+        int[] arrayToSort = {6,7,4,2,8,99,41};
+        try {
+            System.out.println("binary tree " + Arrays.toString(binaryTreeSort.sortArray(arrayToSort)));
+            System.out.println("merge sort " + Arrays.toString(mergeSort.sortArray(arrayToSort)));
+            System.out.println("bubble sort " + Arrays.toString(bubbleSort.sortArray(arrayToSort)));
+        }catch (ArrayTooSmallException e){
+            logger.error(e);
+        }
     }
 
 }

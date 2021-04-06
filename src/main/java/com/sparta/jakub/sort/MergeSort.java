@@ -1,6 +1,6 @@
 package com.sparta.jakub.sort;
 
-import com.sparta.jakub.exceptions.MyException;
+import com.sparta.jakub.exceptions.ArrayTooSmallException;
 import com.sparta.jakub.interfaces.Sorter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,20 +9,27 @@ public class MergeSort implements Sorter {
     public static final Logger logger = LogManager.getLogger(MergeSort.class);
 
     private static MergeSort mergeSort = new MergeSort();
-    public  static MergeSort getInstance() {
+
+    private MergeSort() {
+    }
+
+    public static Sorter getInstance() {
         return mergeSort;
     }
 
-    @Override
-    public int[] sortArray(int[] arrayToSort) throws MyException {
 
-        if (arrayToSort.length == 0 || arrayToSort.length == 1) {
-            throw new MyException("Array too small!");
+    @Override
+    public int[] sortArray(int[] arrayToSort) throws ArrayTooSmallException {
+        if (arrayToSort == null) {
+            throw new NullPointerException("Array is null");
+        }else if (arrayToSort.length == 0 || arrayToSort.length == 1) {
+            throw new ArrayTooSmallException("Array too small!");
         } else {
             mergeSort(arrayToSort);
         }
         return arrayToSort;
     }
+
     private void mergeSort(int[] arrayToSort) {
         if (arrayToSort.length < 2) {
             return;

@@ -1,5 +1,7 @@
 package com.sparta.jakub.binaryTree;
 
+import com.sparta.jakub.exceptions.ChildNotFoundException;
+import com.sparta.jakub.exceptions.RootNullException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,18 +14,18 @@ class BinaryTreeImplTest {
     @BeforeEach
     void setUp() {
 
-        binaryTree.addElements(new int[]{4, 7, 3, 2, 9, 1, 6});
+        binaryTree.addElements(new int[]{5, 2, 1, 4, 3});
     }
 
     @Test
     void getRootElement() {
 
-        assertEquals(4, binaryTree.getRootElement());
+        assertEquals(5, binaryTree.getRootElement());
     }
 
     @Test
     void getNumberOfElements() {
-        assertEquals(7,binaryTree.getNumberOfElements());
+        assertEquals(5, binaryTree.getNumberOfElements());
 
     }
 
@@ -35,31 +37,43 @@ class BinaryTreeImplTest {
 
     @Test
     void addElements() {
-        binaryTree.addElements(new int[]{99,5,47});
-        assertTrue(binaryTree.findElement(99));
-        assertTrue(binaryTree.findElement(5));
-        assertTrue(binaryTree.findElement(47));
+        binaryTree.addElements(new int[]{23, 34, 52});
+        assertTrue(binaryTree.findElement(23));
+        assertTrue(binaryTree.findElement(34));
+        assertTrue(binaryTree.findElement(52));
+        assertEquals(8, binaryTree.getNumberOfElements());
 
     }
 
     @Test
     void findElement() {
-        assertTrue(binaryTree.findElement(9));
+        assertTrue(binaryTree.findElement(5));
+        assertFalse(binaryTree.findElement(117));
+        binaryTree.addElement(117);
+        assertTrue(binaryTree.findElement(117));
     }
 
     @Test
-    void getLeftChild() {
+    void getLeftChild() throws ChildNotFoundException, RootNullException {
+        assertEquals(1, binaryTree.getLeftChild(2));
+
     }
 
     @Test
-    void getRightChild() {
+    void getRightChild() throws ChildNotFoundException, RootNullException {
+        assertEquals(4, binaryTree.getRightChild(2));
+
     }
 
     @Test
     void getSortedTreeAsc() {
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, binaryTree.getSortedTreeAsc());
+
     }
 
     @Test
     void getSortedTreeDesc() {
+        assertArrayEquals(new int[]{5, 4, 3, 2, 1}, binaryTree.getSortedTreeDesc());
+
     }
 }
