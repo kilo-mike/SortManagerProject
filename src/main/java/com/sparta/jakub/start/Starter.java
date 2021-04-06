@@ -18,7 +18,8 @@ public class Starter {
 //        binaryTree.addElements(arrayToSort);
         binaryTree.addElement(67);
 //        System.out.println(binaryTree.getRootElement());
-        System.out.println(   binaryTree.findElement(67));
+        System.out.println(  binaryTree.findElement(68));
+        System.out.println(binaryTree.findElement(9));
 
 
 //        try {

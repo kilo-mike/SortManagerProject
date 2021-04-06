@@ -35,10 +35,16 @@ class BinaryTreeImplTest {
 
     @Test
     void addElements() {
+        binaryTree.addElements(new int[]{99,5,47});
+        assertTrue(binaryTree.findElement(99));
+        assertTrue(binaryTree.findElement(5));
+        assertTrue(binaryTree.findElement(47));
+
     }
 
     @Test
     void findElement() {
+        assertTrue(binaryTree.findElement(9));
     }
 
     @Test

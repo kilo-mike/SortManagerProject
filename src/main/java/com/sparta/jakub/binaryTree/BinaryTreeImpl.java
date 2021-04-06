@@ -7,7 +7,6 @@ import com.sparta.jakub.interfaces.BinaryTree;
 public class BinaryTreeImpl implements BinaryTree {
 
 
-
     static class Node {
         int element;
         Node left;
@@ -20,7 +19,7 @@ public class BinaryTreeImpl implements BinaryTree {
         }
     }
 
-  private  Node root;
+    private Node root;
 
     public BinaryTreeImpl() {
         root = null;
@@ -77,21 +76,20 @@ public class BinaryTreeImpl implements BinaryTree {
     @Override
     public boolean findElement(int value) {
         root = findElement(root, value);
-        if (root != null)
+        if (root != null) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
 
     private Node findElement(Node node, int value) {
-        if (root == null) {
-            return root;
-        } else if (root.element == value) {
-            return root;
-        } else if (root.element > value) {
-            return findElement(root.left, value);
+        if (node == null || node.element == value) {
+            return node;
+        } else if (node.element > value) {
+            return findElement(node.left, value);
         }
-        return findElement(root.right, value);
+        return findElement(node.right, value);
     }
 
 
@@ -119,14 +117,14 @@ public class BinaryTreeImpl implements BinaryTree {
     }
 
     private Node getChild(Node node, int element) throws ChildNotFoundException {
-        if (root == null) {
-            return root;
-        } else if (root.element == element) {
-            return root;
-        } else if (root.element > element) {
-            return findElement(root.left, element);
+        if (node == null) {
+            return node;
+        } else if (node.element == element) {
+            return node;
+        } else if (node.element > element) {
+            return findElement(node.left, element);
         }
-        return findElement(root.right, element);
+        return findElement(node.right, element);
     }
 
     @Override
@@ -144,22 +142,22 @@ public class BinaryTreeImpl implements BinaryTree {
         return sortedArrayDesc;
     }
 
-    private void getSortedAsc(Node root) {
-        if (root != null) {
-            getSortedAsc(root.left);
-            sortedArrayAsc[AscCount] = root.element;
+    private void getSortedAsc(Node node) {
+        if (node != null) {
+            getSortedAsc(node.left);
+            sortedArrayAsc[AscCount] = node.element;
             AscCount++;
-            getSortedAsc(root.right);
+            getSortedAsc(node.right);
         }
 
     }
 
-    private void getSortedDesc(Node root) {
-        if (root != null) {
-            getSortedAsc(root.right);
-            sortedArrayDesc[DescCount] = root.element;
+    private void getSortedDesc(Node node) {
+        if (node != null) {
+            getSortedAsc(node.right);
+            sortedArrayDesc[DescCount] = node.element;
             DescCount++;
-            getSortedAsc(root.left);
+            getSortedAsc(node.left);
         }
 
     }
