@@ -1,14 +1,14 @@
-#Sort Manager
+# Sort Manager
 
 Sort Manager Java project completed at Sparta Global.
 
-#Algorithms Covered
+# Algorithms Covered
 
 Bubble Sort (Iterative)
 Merge Sort (Recursive)
 Binary Tree (Recursive)
 
-#Java Topics
+# Java Topics
 
 Iterations
 Recursions
@@ -22,6 +22,6 @@ Enums
 Custom Exceptions
 
 
-#Author
+# Author
 
 Jakub Matyjewicz
