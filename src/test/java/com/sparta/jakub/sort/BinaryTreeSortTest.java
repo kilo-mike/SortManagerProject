@@ -14,18 +14,18 @@ class BinaryTreeSortTest {
     private Sorter binaryTreeSorter = null;
 
     @BeforeEach
-    void setup() {
+    void setUp() {
         SorterFactory sorterFactory = new SorterFactory();
         binaryTreeSorter = sorterFactory.getSorter(SorterType.BINARY);
     }
 
     @Test
-    void sortTest() throws ArrayTooSmallException {
+    void binarySortTest() throws ArrayTooSmallException {
         assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6}, binaryTreeSorter.sortArray(new int[]{5, 2, 6, 1, 4, 3}));
     }
 
     @Test
-    void nullTest() {
+    void nullArrayTest() {
         Exception exception = assertThrows(NullPointerException.class, () -> {
             binaryTreeSorter.sortArray(null);
         });

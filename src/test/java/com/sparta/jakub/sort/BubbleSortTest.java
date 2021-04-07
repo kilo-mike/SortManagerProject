@@ -14,18 +14,18 @@ class BubbleSortTest {
     private Sorter bubbleSorter = null;
 
     @BeforeEach
-    void setup() {
+    void setUp() {
         SorterFactory sorterFactory = new SorterFactory();
         bubbleSorter = sorterFactory.getSorter(SorterType.BUBBLE);
     }
 
     @Test
-    void sortTest() throws ArrayTooSmallException {
+    void bubbleSortTest() throws ArrayTooSmallException {
         assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6}, bubbleSorter.sortArray(new int[]{5, 2, 6, 1, 4, 3}));
     }
 
     @Test
-    void nullTest() {
+    void nullArrayTest() {
         Exception exception = assertThrows(NullPointerException.class, () -> bubbleSorter.sortArray(null));
         assertEquals("Array is null", exception.getMessage());
     }

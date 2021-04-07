@@ -13,18 +13,18 @@ class MergeSortTest {
     private Sorter mergeSorter = null;
 
     @BeforeEach
-    void setup() {
+    void setUp() {
         SorterFactory sorterFactory = new SorterFactory();
         mergeSorter = sorterFactory.getSorter(SorterType.MERGE);
     }
 
     @Test
-    void sortTest() throws ArrayTooSmallException {
+    void mergeSortTest() throws ArrayTooSmallException {
         assertArrayEquals(new int[]{1, 2, 3, 4, 5, 6}, mergeSorter.sortArray(new int[]{5, 2, 1, 4, 6, 3}));
     }
 
     @Test
-    void nullTest() {
+    void nullArrayTest() {
         Exception exception = assertThrows(NullPointerException.class, () -> mergeSorter.sortArray(null));
         assertEquals("Array is null", exception.getMessage());
     }
